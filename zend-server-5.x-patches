@@ -1,0 +1,26 @@
+--- /etc/profile.d/oracle-instant-client-zend-server.sh 1970-01-01 01:00:00.000000000 +0100
++++ /etc/profile.d/oracle-instant-client-zend-server.sh 2012-01-16 21:06:47.952318967 +0100
+@@ -0,0 +1,7 @@
++if [ -z $LD_LIBRARY_PATH ];then
++   LD_LIBRARY_PATH=/lib:/usr/lib:/usr/lib/oracle/11.2/client64/lib:/usr/local/zend/lib
++else
++    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/11.2/client64/lib:/usr/local/zend/lib
++fi
++export LD_LIBRARY_PATH
++export ORACLE_HOME=/usr/lib/oracle/11.2/client64/lib
+
+--- /etc/zce.rc 2012-01-16 18:20:04.000000000 +0100
++++ /etc/zce.rc 2012-01-16 15:11:38.000000000 +0100
+@@ -1,3 +1,4 @@
++. /etc/profile.d/oracle-instant-client-zend-server.sh
+ if [ ! -z $LD_LIBRARY_PATH ];then
+        LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/zend/lib
+        export LD_LIBRARY_PATH
+
+--- /etc/ld.so.conf.d/zend_server.conf  2012-01-16 18:35:17.000000000 +0100
++++ /etc/ld.so.conf.d/zend_server.conf  2012-01-16 15:12:55.000000000 +0100
+@@ -1,3 +1,4 @@
+ /lib64
++/usr/lib/oracle/11.2/client64/lib
+ /usr/lib64
+ /usr/local/zend/lib
