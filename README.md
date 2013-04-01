@@ -1,4 +1,4 @@
-# Zend Server OCI patch #
+# Zend Server 5.x & 6.x OCI patch #
 
 ## Prerequisite ##
 
