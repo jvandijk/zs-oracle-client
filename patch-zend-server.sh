@@ -2,7 +2,7 @@
 
 version=`cat /etc/zce.rc | grep PRODUCT_VERSION | awk -F "=" '{print $2}' | awk -F "." '{print $1}'`
 
-if [ $version == "6" ]; then
+if [ $version == "6" ] || [ $version == "7" ]; then
     cd /usr/local/zend/lib
     if [ ! -d "oci8-backup" ]; then
         mkdir oci8-backup
